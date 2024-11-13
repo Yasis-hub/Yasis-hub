@@ -1,43 +1,27 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Designing Front Page</title>
+	<title>Log in</title>
 	<style>
 		body {
-			background-color: grey;
 			display: flex;
-			justify-content: center; 
-			align-items: center; 
-			height: 100vh; 
-			margin: 0; 
+			justify-content: center;
+			align-items: center;
+			margin: 5;
 		}
-		div {
-			width: 250px;
-			height: 300px;
-			text-align: center; 
-			transition: width 0.5s ease-in-out, transform 1s ease-in-out; 
-			display: flex;
-			flex-direction: column; 
-			justify-content: center; 
-			background-color: white; 
-			border-radius: 10px; 
-			box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-		}
-		div:hover {
-			width: 750px;
-			transform: rotate(360deg); 
-		}
-		input, select {
-			width: 90%; 
-			margin: 5px ; 
-		}
+		form {
+			text-align: center;
+			width: 300px;
+			padding: 20px;
+			border: 1px solid;
+			border-radius: 10px;
 	</style>
 </head>
-
 <body>
-	<div>
+
+
 		<form>
 			<h1>Welcome To My Form</h1>
 			<label for="first_name">First name:</label><br>
@@ -63,12 +47,14 @@
 			<br>
 			<label for="gender">Gender:</label><br>
 			<select id="gender" name="gender" required>
-				<option value="male">Male</option>
-				<option value="female">Female</option>
+				 <option value="">Select</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
 			</select>
 			<br>
-			<input type="submit" value="Submit">
+			<button>Submit</button>
+			<button>Reset</button>
 		</form>
-	</div>
 </body>
 </html>
+	
