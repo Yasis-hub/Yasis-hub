@@ -12,7 +12,7 @@
             height: 100vh;
             margin: 0;
             font-family: Arial, sans-serif;
-            background-color: #f9f9f9;
+            background-color: lightgreen;
         }
         form {
             text-align: center;
@@ -21,15 +21,7 @@
             border: 1px solid #ccc;
             border-radius: 10px;
             box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-            background-color: #fff;
-        }
-        input, select, button {
-            width: calc(100% - 20px);
-            margin: 10px 0;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            box-sizing: border-box;
+            background-color: lightskyblue;
         }
         button {
             cursor: pointer;
@@ -51,28 +43,28 @@
 <body>
     <form method="POST" action="/">
         <h1>Welcome To My Form</h1>
-        <label for="first_name">First name:</label><br>
-        <input type="text" id="first_name" name="first_name" placeholder="Enter your first name" required><br>
+        <label>First name:</label><br>
+        <input type="text" id="first_name"  placeholder="Enter your first name"><br><br.
 
-        <label for="middle_name">Middle name:</label><br>
-        <input type="text" id="middle_name" name="middle_name" placeholder="Enter your middle name"><br>
+        <label>Middle name:</label><br>
+        <input type="text" id="middle_name" placeholder="Enter your middle name"><br><br>
 
         <label for="last_name">Last name:</label><br>
-        <input type="text" id="last_name" name="last_name" placeholder="Enter your last name" required><br>
+        <input type="text" id="last_name"  placeholder="Enter your last name" ><br><br>
 
         <label for="dob">Date of Birth:</label><br>
-        <input type="date" id="dob" name="dob" required><br>
+        <input type="date" id="dob" ><br><br>
 
         <label for="address">Address:</label><br>
-        <input type="text" id="address" name="address" placeholder="Enter your address" required><br>
+        <input type="text" id="address"  placeholder="Enter your address"><br><br>
 
         <label for="email">Email:</label><br>
-        <input type="email" id="email" name="email" placeholder="Enter your email" required><br>
+        <input type="email" id="email"  placeholder="Enter your email"><br><br>
 
         <label for="contact">Contact no:</label><br>
-        <input type="tel" id="contact" name="contact" placeholder="Enter your contact number" required><br>
+        <input type="tel" id="contact"  placeholder="Enter your contact number"><br><br>
 
-        <label for="gender">Gender:</label><br>
+        <label>Gender:</label><br>
         <select id="gender" name="gender" required>
             <option value="">Select</option>
             <option value="male">Male</option>
