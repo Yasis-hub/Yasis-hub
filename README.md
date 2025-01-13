@@ -1,11 +1,3 @@
-from flask import Flask, request, redirect, url_for, render_template_string
-import sqlite3
-import os
-
-app = Flask(__name__)
-
-# HTML form template as a string
-form_html = """
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,6 +12,7 @@ form_html = """
             height: 100vh;
             margin: 0;
             font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
         }
         form {
             text-align: center;
@@ -28,6 +21,30 @@ form_html = """
             border: 1px solid #ccc;
             border-radius: 10px;
             box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+        }
+        input, select, button {
+            width: calc(100% - 20px);
+            margin: 10px 0;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        button {
+            cursor: pointer;
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        button[type="reset"] {
+            background-color: #dc3545;
+        }
+        button[type="reset"]:hover {
+            background-color: #c82333;
         }
     </style>
 </head>
@@ -47,13 +64,13 @@ form_html = """
         <input type="date" id="dob" name="dob" required><br>
 
         <label for="address">Address:</label><br>
-        <input type="text" id="address" name="address" placeholder="Enter your Address" required><br>
+        <input type="text" id="address" name="address" placeholder="Enter your address" required><br>
 
         <label for="email">Email:</label><br>
-        <input type="email" id="email" name="email" placeholder="Enter your Email" required><br>
+        <input type="email" id="email" name="email" placeholder="Enter your email" required><br>
 
         <label for="contact">Contact no:</label><br>
-        <input type="tel" id="contact" name="contact" required><br>
+        <input type="tel" id="contact" name="contact" placeholder="Enter your contact number" required><br>
 
         <label for="gender">Gender:</label><br>
         <select id="gender" name="gender" required>
@@ -67,56 +84,3 @@ form_html = """
     </form>
 </body>
 </html>
-"""
-
-# Database initialization function
-def init_db():
-    if not os.path.exists("users.db"):
-        with sqlite3.connect("users.db") as conn:
-            conn.execute("""
-            CREATE TABLE IF NOT EXISTS users (
-                id INTEGER PRIMARY KEY AUTOINCREMENT,
-                first_name TEXT,
-                middle_name TEXT,
-                last_name TEXT,
-                dob TEXT,
-                address TEXT,
-                email TEXT,
-                contact TEXT,
-                gender TEXT
-            )
-            """)
-            conn.commit()
-
-init_db()  # Initialize the database if it doesn't already exist
-
-@app.route("/", methods=["GET", "POST"])
-def form():
-    if request.method == "POST":
-        # Get form data
-        first_name = request.form.get("first_name")
-        middle_name = request.form.get("middle_name")
-        last_name = request.form.get("last_name")
-        dob = request.form.get("dob")
-        address = request.form.get("address")
-        email = request.form.get("email")
-        contact = request.form.get("contact")
-        gender = request.form.get("gender")
-
-        # Insert data into the database
-        with sqlite3.connect("users.db") as conn:
-            cursor = conn.cursor()
-            cursor.execute("""
-            INSERT INTO users (first_name, middle_name, last_name, dob, address, email, contact, gender)
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?)
-            """, (first_name, middle_name, last_name, dob, address, email, contact, gender))
-            conn.commit()
-
-        # Redirect back to the form page after submission
-        return redirect(url_for("form"))
-
-    # Render the form HTML
-    return render_template_string(form_html)
-
-if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=8080, debug=True)
