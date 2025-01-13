@@ -44,7 +44,7 @@
     <form method="POST" action="/">
         <h1>Welcome To My Form</h1>
         <label>First name:</label><br>
-        <input type="text" id="first_name"  placeholder="Enter your first name"><br><br.
+        <input type="text" id="first_name"  placeholder="Enter your first name"><br><br>
 
         <label>Middle name:</label><br>
         <input type="text" id="middle_name" placeholder="Enter your middle name"><br><br>
